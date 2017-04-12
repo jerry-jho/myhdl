@@ -130,6 +130,11 @@ class _UserVerilogCode(_UserCode):
     def raiseError(self, msg, info):
         raise ToVerilogError("Error in user defined Verilog code", msg, info)
 
+class _UserSystemCCode(_UserCode):
+
+    def raiseError(self, msg, info):
+        raise ToSystemCError("Error in user defined system-c code", msg, info)
+    
 
 class _UserVhdlCode(_UserCode):
 

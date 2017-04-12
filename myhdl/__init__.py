@@ -122,6 +122,8 @@ class ConversionError(Error):
 class ToVerilogError(ConversionError):
     pass
 
+class ToSystemCError(ConversionError):
+    pass
 
 class ToVHDLError(ConversionError):
     pass
@@ -134,6 +136,8 @@ class ConversionWarning(UserWarning):
 class ToVerilogWarning(ConversionWarning):
     pass
 
+class ToSystemCWarning(ConversionWarning):
+    pass
 
 class ToVHDLWarning(ConversionWarning):
     pass
@@ -169,6 +173,7 @@ from ._traceSignals import traceSignals
 from myhdl import conversion
 from .conversion import toVerilog
 from .conversion import toVHDL
+from .conversion import toSystemC
 
 from ._tristate import Tristate
 
@@ -203,6 +208,7 @@ __all__ = ["bin",
            "traceSignals",
            "toVerilog",
            "toVHDL",
+           "toSystemC",
            "conversion",
            "Tristate"
            ]

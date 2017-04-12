@@ -60,7 +60,8 @@ class _WaiterList(list):
     def purge(self):
         if self:
             self[:] = [w for w in self if not w.hasRun]
-
+    def _toSystemC(self):
+        return self.sig._name
 
 class _PosedgeWaiterList(_WaiterList):
 
@@ -69,6 +70,9 @@ class _PosedgeWaiterList(_WaiterList):
 
     def _toVerilog(self):
         return "posedge %s" % self.sig._name
+    
+    def edge(self):
+        return 'pos'
 
     def _toVHDL(self):
         return "rising_edge(%s)" % self.sig._name
@@ -84,7 +88,10 @@ class _NegedgeWaiterList(_WaiterList):
 
     def _toVHDL(self):
         return "falling_edge(%s)" % self.sig._name
-
+    
+    def edge(self):
+        return 'neg'    
+    
 
 def posedge(sig):
     """ Return a posedge trigger object """
